@@ -31,6 +31,7 @@ Customización Ramos Revestimientos
 """,
     'author': 'jeo Software',
     'depends': [
+        'l10n_ar_base',  # modulo base para localización argentina
     ],
     'data': [
     ],
