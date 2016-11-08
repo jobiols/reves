@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+
+        <!-- Orden de compra sin precios, saca el odt de reves_default -->
+
+        <record id="l10n_ar_aeroo_purchase.action_aeroo_report_ar_purchase_order"
+                model="ir.actions.report.xml">
+            <field name="report_rml">reves_default/purchase_order.odt</field>
+        </record>
+
+        <!-- presupuesto con precios iva incluido, saca el odt de reves_default -->
+
+        <record id="l10n_ar_aeroo_sale.action_aeroo_report_ar_sale_order"
+                model="ir.actions.report.xml">
+            <field name="report_rml">reves_default/sale_order.odt</field>
+        </record>
+
+        <!-- factura modificada, saca el odt de reves_default -->
+
+        <record id="l10n_ar_aeroo_einvoice.action_aeroo_report_ar_einvoice"
+                context="{'no_key_lines':True}"
+                model="ir.actions.report.xml">
+            <field name="report_rml">reves_default/einvoice.odt</field>
+            <field name="background_image" type="base64"
+                   file="reves_default/einvoice.png"/>
+        </record>
+
+        <!-- remito modificado, saca el odt de reves_default -->
+
+        <record id="l10n_ar_aeroo_stock.action_aeroo_report_ar_stock_picking"
+                model="ir.actions.report.xml">
+            <field name="report_rml">reves_default/stock_picking.odt</field>
+        </record>
+
+    </data>
+</openerp>

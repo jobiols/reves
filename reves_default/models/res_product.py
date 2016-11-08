@@ -18,6 +18,20 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 #-----------------------------------------------------------------------------------
-from . import models
+from openerp import models, fields, api
+
+class product_product(models.Model):
+    _inherit = 'product.product'
+
+    prod_in_box = fields.Float(
+        u'Cant producto por caja',
+        help=u'Cantidad de metros cuadrados o lineales que entran en una caja')
+
+    prod_in_box_uom = fields.Selection([
+            ('mt2', 'mts cuadrados'),
+            ('mt', 'mts'),
+        ],
+        'Unidad', required=True,
+        default='mt2')
 
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:

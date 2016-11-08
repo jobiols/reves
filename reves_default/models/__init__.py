@@ -18,6 +18,8 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 #-----------------------------------------------------------------------------------
-from . import models
+from . import res_product
+from . import account_tax
+from . import account_invoice_line
 
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:

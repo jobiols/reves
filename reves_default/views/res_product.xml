@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+
+        <!-- agrega la cantidad de producto que hay en cada caja pudiendo seleccionar
+             además la unidad de medida -->
+
+        <record model='ir.ui.view' id='product_form_view_reves'>
+            <field name='name'>product.form.reves</field>
+            <field name='model'>product.product</field>
+            <field name='inherit_id' ref='product.product_normal_form_view'/>
+            <field name='type'>form</field>
+            <field name='arch' type='xml'>
+                <xpath expr="//field[@name='lst_price']" position="after">
+                    <group col="3" colspan="3">
+                        <field name="prod_in_box"/>
+                        <field name="prod_in_box_uom" nolabel="1"/>
+                    </group>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</openerp>
