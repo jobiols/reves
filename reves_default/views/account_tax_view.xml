@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        <record id="view_tax_form_valente" model="ir.ui.view">
+            <field name="name">account.tax.form</field>
+            <field name="model">account.tax</field>
+			<field name="inherit_id" ref="account.view_tax_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='description']" position="after">
+                    <field name="short_description" string="Descripción corta"
+                           help="Descripción que va a salir en las lineas de factura" />
+                </xpath>
+            </field>
+        </record>
+    </data>
+</openerp>
