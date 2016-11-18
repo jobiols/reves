@@ -18,10 +18,10 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 #-----------------------------------------------------------------------------------
-from openerp import models, fields, api
+from openerp import models, fields
 
 class product_product(models.Model):
-    _inherit = 'product.product'
+    _inherit = 'product.template'
 
     prod_in_box = fields.Float(
         u'Cant producto por caja',
