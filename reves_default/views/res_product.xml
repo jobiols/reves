@@ -2,8 +2,8 @@
 <openerp>
     <data>
 
-        <!-- agrega la cantidad de producto que hay en cada caja pudiendo seleccionar
-             además la unidad de medida -->
+        <!-- agrega en la ficha de producto la cantidad de producto que hay en cada caja
+             pudiendo seleccionar además la unidad de medida -->
 
         <record model='ir.ui.view' id='product_form_view_reves'>
             <field name='name'>product.form.reves</field>

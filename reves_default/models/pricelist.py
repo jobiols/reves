@@ -18,10 +18,15 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 #-----------------------------------------------------------------------------------
-from . import res_product
-from . import account_tax
-from . import account_invoice_line
-from . import sale
-from . import pricelist
+from openerp import models, fields
+
+class product_pricelist(models.Model):
+    _inherit = "product.pricelist"
+
+    # Para que los vendedores no accedan a ciertas listas de precio.
+    restricted = fields.Boolean(
+        'Restringido'
+    )
+
 
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:

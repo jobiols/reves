@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+<!--
+   (4, ref('base.group_user')) - base minimo acceso
+   (4, ref('base.group_sale_salesman')), - ver iniciativas propias
+   (4, ref('account.group_account_invoice')), - datos de facturacion
+-->
+        <data noupdate="0">
+
+            <!-- los usuarios de este grupo no pueden modificar precios, este grupo se usa
+            en sale_view.xls para poner en readonly el precio -->
+
+            <record id="group_reves_sales_readonly_price" model="res.groups">
+                <field name="name">Ramos Revestimientos - NO permite modificar precios</field>
+                <field name="category_id" ref="base.module_category_hidden"/>
+                <field name="comment">El usuario que tenga este grupo no puede modificar
+                    los precios, ni en la orden de compra ni en la factura</field>
+            </record>
+
+            <!-- grupo usuarios de ventas -->
+            <record id="group_reves_sales_users" model="res.groups">
+                <field name="name">Ramos Revestimientos - Usuario comercial</field>
+                <field name="category_id" ref="base.module_category_hidden"/>
+                <field name="comment">Grupo para todos los usuarios comerciales</field>
+                <field name="implied_ids"
+                       eval="[
+                                (4, ref('account.group_account_invoice')),
+                                (4, ref('base.group_user')),
+                                (4, ref('base.group_sale_salesman')),
+                                (4, ref('reves_default.group_reves_sales_readonly_price'))  ]"/>
+            </record>
+
+            <!-- grupo usuarios de almacen -->
+            <record id="group_reves_stock_users" model="res.groups">
+                <field name="name">Ramos Revestimientos - Usuario de stock</field>
+                <field name="category_id" ref="base.module_category_hidden"/>
+                <field name="comment">Grupo para todos los usuarios que manejan stock</field>
+                <field name="implied_ids"
+                       eval="[
+                                (4, ref('base.group_user')),
+                                (4, ref('stock.group_locations')),
+                                (4, ref('stock.group_stock_user')),
+                                (4, ref('stock.group_stock_manager')),
+                                 ]"/>
+            </record>
+
+            <!-- grupo usuarios administradores -->
+            <record id="group_reves_admin_users" model="res.groups">
+                <field name="name">Ramos Revestimientos - Administración</field>
+                <field name="category_id" ref="base.module_category_hidden"/>
+                <field name="comment">Grupo para todos los usuarios que son administradores
+                    del sistema, tienen todas las funciones</field>
+                <field name="implied_ids"
+                       eval="[
+                                (4, ref('account.group_account_user')),
+                                (4, ref('account.group_account_invoice')),
+                                (4, ref('stock.group_locations')),
+                                (4, ref('purchase.group_purchase_manager')),
+                                (4, ref('purchase.group_purchase_user')),
+                                (4, ref('stock.group_stock_manager'))   ]"/>
+            </record>
+
+            <!-- Reglas de registro para manejar las listas de precios -->
+
+            <!-- muestra las listas de precio con restricted = True solo al grupo sales users -->
+            <record id="pricelist_restrict_reves_rule" model="ir.rule">
+                <field name="name">Regla para mostrar solo las listas de precio no restringidas</field>
+                <field name="model_id" ref="product.model_product_pricelist"/>
+                <field name="groups" eval="[(4, ref('group_reves_sales_users'))]"/>
+                <field name="domain_force">[('restricted','=',False)]</field>
+            </record>
+
+            <!-- no pude ocultar el menu de pricelist en sales
+            <menuitem id="product.menu_product_pricelist_main" groups="group_reves_admin_users"/>
+            <menuitem id="product.menu_product_pricelist_action" groups="group_reves_admin_users"/>
+            <menuitem id="product.menu_product_pricelist_action2" groups="group_reves_admin_users"/>
+            <menuitem id="product.menu_product_price_type" groups="group_reves_admin_users"/>
+-->
+
+            <!-- oculta globalmente las listas de precio con restricted = True
+            <record id="pricelist_restrict_reves_rule" model="ir.rule">
+                <field name="name">Regla para ocultar las listas de precio restringidas</field>
+                <field name="model_id" ref="product.model_product_pricelist"/>
+                <field name="global" eval="True"/>
+                <field name="domain_force">[('restricted','=',False)]</field>
+            </record>
+-->
+            <!-- hace aparecer el menu de categorias
+
+            <menuitem id="prod_config_main1"
+                      parent="base.menu_product"
+                      action="product.product_category_action_form"
+                      name="Categorias de productos"
+                      sequence="770"/>
+             -->
+        </data>
+</openerp>
