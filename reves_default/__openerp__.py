@@ -48,7 +48,7 @@ Customización Ramos Revestimientos
 #        'account_journal_sequence', #Adds sequence field on account journal and it is going to be considered when choosing journals in differents models.
 #        'l10n_ar_aeroo_sale',       # dependencia requerida
          'l10n_ar_aeroo_purchase',   # dependencia requerida
-#        'l10n_ar_aeroo_einvoice',   # dependencia requerida
+        'l10n_ar_aeroo_einvoice',   # dependencia requerida
 #        'l10n_ar_aeroo_stock',      # dependencia requerida
 #        'po_custom_reports',        # dependencia requerida
 #        'custom_vat_ledger',        # dependencia requerida
@@ -58,12 +58,12 @@ Customización Ramos Revestimientos
          'product_unique_default_code', # impide que se duplique el default_code
     ],
     'data': [
-        'views/res_product.xml',
         'views/custom_reports.xml',
+        'views/res_product.xml',
         'views/account_tax_view.xml',
         'security/security_groups.xml',
         'views/sale_view.xml',
-        'views/pricelist_view.xml'
+        'views/pricelist_view.xml',
     ],
     'test': [
 
