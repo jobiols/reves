@@ -50,7 +50,7 @@ Customización Ramos Revestimientos
         'l10n_ar_aeroo_sale',       # dependencia requerida
         'l10n_ar_aeroo_purchase',   # dependencia requerida
         'l10n_ar_aeroo_einvoice',   # dependencia requerida
-#        'l10n_ar_aeroo_stock',      # dependencia requerida
+        'l10n_ar_aeroo_stock',      # dependencia requerida
 #        'po_custom_reports',        # dependencia requerida
 #        'custom_vat_ledger',        # dependencia requerida
 #        'odoo_argentina_fix',       # patch a la localización
