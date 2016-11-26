@@ -36,7 +36,7 @@ Customización Ramos Revestimientos
         #'base_vat_unique_parent',  # evita que duplique cuit en multicompañia
         'disable_openerp_online',   # elimina referencias a odoo online
         'account_cancel',  # Muestra el check en los diarios que permite cancelar asientos
-        'product_pricelist_import', # Importa lista de precios y carga productos
+#        'product_pricelist_import', # Importa lista de precios y carga productos
         'hide_product_variants',    # oculta las variantes
         'im_chat',                  # mensajeria instantanea entre usuarios de odoo
 #        'express_checkout',         # Facturación express
