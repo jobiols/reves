@@ -17,7 +17,9 @@
                     los precios, ni en la orden de compra ni en la factura</field>
             </record>
 
-            <!-- grupo usuarios de ventas -->
+            <!-- grupo usuarios de ventas
+                                (4, ref('product_pricelist_import.usr_group')),
+            -->
             <record id="group_reves_sales_users" model="res.groups">
                 <field name="name">Ramos Revestimientos - Usuario comercial</field>
                 <field name="category_id" ref="base.module_category_hidden"/>
@@ -45,14 +47,17 @@
                                  ]"/>
             </record>
 
-            <!-- grupo usuarios administradores -->
+            <!-- grupo usuarios administradores
+                                (4, ref('product_pricelist_import.adm_group')),
+            -->
             <record id="group_reves_admin_users" model="res.groups">
                 <field name="name">Ramos Revestimientos - Administración</field>
                 <field name="category_id" ref="base.module_category_hidden"/>
                 <field name="comment">Grupo para todos los usuarios que son administradores
                     del sistema, tienen todas las funciones</field>
                 <field name="implied_ids"
-                       eval="[  (4, ref('product_pricelist_import.adm_group')),
+                       eval="[
+
                                 (4, ref('account.group_account_user')),
                                 (4, ref('account.group_account_invoice')),
                                 (4, ref('stock.group_locations')),
