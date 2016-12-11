@@ -57,6 +57,7 @@ Customización Ramos Revestimientos
 #        'account_invoice_tax_add',  # agrega insercion manual de impuestos para factura de compras
 #        'ticket_citi_fix',          # corrige citi para pv impresor fiscal
          'product_unique_default_code', # impide que se duplique el default_code
+         'hide_messaging', # oculta el menu de mensajeria
     ],
     'data': [
         'views/custom_reports.xml',
