@@ -23,5 +23,6 @@ from . import account_tax
 from . import account_invoice_line
 from . import sale
 from . import pricelist
+from . import sale_stock
 
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:

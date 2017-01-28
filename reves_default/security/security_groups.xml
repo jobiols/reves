@@ -59,12 +59,14 @@
                                 (4, ref('stock.group_locations')),
                                 (4, ref('purchase.group_purchase_manager')),
                                 (4, ref('stock.group_stock_manager')),
-                                (4, ref('base.group_sale_manager'))   ]"/>
+                                (4, ref('base.group_sale_manager')),
+                                (4, ref('base_multi_store.group_multi_store'))
+                                   ]"/>
             </record>
 
             <!-- Reglas de registro para manejar las listas de precios -->
 
-            <!-- muestra las listas de precio con restricted = True solo al grupo sales users -->
+            <!-- no muestra las listas de precio con restricted = True solo al grupo sales users -->
             <record id="pricelist_restrict_reves_rule" model="ir.rule">
                 <field name="name">Regla para mostrar solo las listas de precio no restringidas</field>
                 <field name="model_id" ref="product.model_product_pricelist"/>
