@@ -4,4 +4,4 @@ server-tools https://github.com/jobiols/server-tools.git  8.0
 adhoc-account-invoicing https://github.com/jobiols/adhoc-account-invoicing.git 8.0
 odoomrp-wip https://github.com/jobiols/odoomrp-wip.git 8.0
 jeo https://github.com/jobiols/jeo.git 8.0
-jeo https://github.com/jobiols/multi_store.git 8.0
+jeo https://github.com/jobiols/adhoc-multi-store.git 8.0
