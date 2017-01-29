@@ -61,10 +61,10 @@ Customización Ramos Revestimientos
          'base_multi_store',  # agrega capacidad de multitienda analogo a multicompañia
     ],
     'data': [
+        'security/security_groups.xml',
         'views/custom_reports.xml',
         'views/res_product.xml',
         'views/account_tax_view.xml',
-        'security/security_groups.xml',
         'views/sale_view.xml',
         'views/pricelist_view.xml',
     ],
