@@ -18,15 +18,16 @@
                     </group>
                 </xpath>
 
-                <!-- cambia el label del campo a precio mercadolibre -->
+                <!-- cambia el label del campo a precio mercadolibre
                 <xpath expr="//field[@name='lst_price']" position="attributes">
                     <attribute name="string">Precio Mercadolibre</attribute>
                 </xpath>
+                -->
             </field>
         </record>
 
         <!-- agrega una condición para que los integrantes del grupo group_reves_sales_readonly_price
-             no puedan ver el campo precio mercadolibre -->
+             no puedan ver el campo precio mercadolibre
 
         <record id="product_form_hide_meli_price_reves" model="ir.ui.view">
             <field name="name">product.form.hide.meli.reves</field>
@@ -39,6 +40,6 @@
                 </xpath>
             </field>
         </record>
-
+-->
     </data>
 </openerp>
