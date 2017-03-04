@@ -59,6 +59,7 @@ Customización Ramos Revestimientos
          'product_unique_default_code', # impide que se duplique el default_code
          'hide_messaging',  # oculta el menu de mensajeria
          'base_multi_store',  # agrega capacidad de multitienda analogo a multicompañia
+         'voucher_payment_check_fix', #evita que aparezca cheques propios en medios de pago de cliente
     ],
     'data': [
         'security/security_groups.xml',
