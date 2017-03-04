@@ -34,5 +34,13 @@
             </field>
         </record>
 
+
+        <!-- ocultar el menu Contabilidad / Proveedores para los usuarios que no son administradores -->
+
+        <record model="ir.ui.menu" id="account.menu_finance_payables">
+            <field name="groups_id" eval="[(6,0,[ref('group_reves_admin_users')])]"/>
+        </record>
+
+
     </data>
 </openerp>
