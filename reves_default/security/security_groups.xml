@@ -8,7 +8,7 @@
         <data noupdate="0">
 
             <!-- los usuarios de este grupo no pueden modificar precios, este grupo se usa
-            en sale_view.xls para poner en readonly el precio -->
+            en sale_view.xls para poner en readonly el precio
 
             <record id="group_reves_sales_readonly_price" model="res.groups">
                 <field name="name">Ramos Revestimientos - NO permite modificar precios</field>
@@ -16,6 +16,7 @@
                 <field name="comment">El usuario que tenga este grupo no puede modificar
                     los precios, ni en la orden de compra ni en la factura</field>
             </record>
+-->
 
             <!-- grupo usuarios de ventas -->
             <record id="group_reves_sales_users" model="res.groups">
@@ -27,8 +28,7 @@
                                 (4, ref('product_pricelist_import.usr_group')),
                                 (4, ref('account.group_account_invoice')),
                                 (4, ref('base.group_user')),
-                                (4, ref('base.group_sale_salesman')),
-                                (4, ref('reves_default.group_reves_sales_readonly_price'))  ]"/>
+                                (4, ref('base.group_sale_salesman'))  ]"/>
             </record>
 
             <!-- grupo usuarios de almacen -->

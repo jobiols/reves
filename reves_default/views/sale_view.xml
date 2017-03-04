@@ -2,14 +2,15 @@
 <openerp>
     <data>
 
-        <!-- agrega una condición para que los integrantes del grupo group_reves_sales_readonly_price
-        no puedan editar el precio en la orden de venta-->
+        <!-- agrega una condición para que los integrantes del grupo group_reves_sales_users y
+        group_reves_stock_users no puedan editar el precio en la orden de venta-->
 
         <record id="view_order_form_readonly_price_reves" model="ir.ui.view">
             <field name="name">sale.order.form.readonly.reves</field>
             <field name="model">sale.order</field>
             <field name="inherit_id" ref="sale.view_order_form"/>
-            <field name="groups_id" eval="[(6, 0, [ref('group_reves_sales_readonly_price') ])]"/>
+            <field name="groups_id" eval="[(6, 0, [ref('group_reves_sales_users'),
+                                                   ref('group_reves_stock_users')  ])]"/>
             <field name="arch" type="xml">
                 <xpath expr="//field[@name='order_line']/tree/field[@name='price_unit']" position="attributes">
                     <attribute name="readonly">1</attribute>
@@ -17,14 +18,15 @@
             </field>
         </record>
 
-        <!-- agrega una condición para que los integrantes del grupo group_reves_sales_readonly_price
-        no puedan editar el precio en la factura-->
+        <!-- agrega una condición para que los integrantes del grupo group_reves_sales_users y
+        group_reves_stock_users  no puedan editar el precio en la factura-->
 
         <record id="account_invoice_form_readonly_price_reves" model="ir.ui.view">
             <field name="name">invoice.order.form.readonly.reves</field>
             <field name="model">account.invoice</field>
             <field name="inherit_id" ref="account.invoice_form"/>
-            <field name="groups_id" eval="[(6, 0, [ref('group_reves_sales_readonly_price') ])]"/>
+            <field name="groups_id" eval="[(6, 0, [ref('group_reves_sales_users'),
+                                                   ref('group_reves_stock_users')  ])]"/>
             <field name="arch" type="xml">
                 <xpath expr="//notebook/page/field/tree/field[@name='price_unit']" position="attributes">
                     <attribute name="readonly">1</attribute>
