@@ -33,7 +33,7 @@
 
             <!-- grupo usuarios de almacen -->
             <record id="group_reves_stock_users" model="res.groups">
-                <field name="name">Ramos Revestimientos - Usuario de stock</field>
+                <field name="name">Ramos Revestimientos - Usuario de almacén</field>
                 <field name="category_id" ref="base.module_category_hidden"/>
                 <field name="comment">Grupo para todos los usuarios que manejan stock</field>
                 <field name="implied_ids"

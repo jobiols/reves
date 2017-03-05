@@ -33,5 +33,12 @@
             <field name="report_rml">reves_default/stock_picking.odt</field>
         </record>
 
+        <!-- recibo modificado, saca el odt de reves_default -->
+
+        <record id="l10n_ar_aeroo_voucher.action_aeroo_report_ar_voucher"
+                model="ir.actions.report.xml">
+            <field name="report_rml">reves_default/receipt.odt</field>
+        </record>
+
     </data>
 </openerp>
