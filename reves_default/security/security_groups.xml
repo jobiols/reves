@@ -18,17 +18,22 @@
             </record>
 -->
 
-            <!-- grupo usuarios de ventas -->
+            <!-- grupo usuarios de ventas
+              (4, ref('stock.group_stock_user')), para que pueda ver stock en todos lados
+
+            -->
             <record id="group_reves_sales_users" model="res.groups">
                 <field name="name">Ramos Revestimientos - Usuario comercial</field>
                 <field name="category_id" ref="base.module_category_hidden"/>
                 <field name="comment">Grupo para todos los usuarios comerciales</field>
                 <field name="implied_ids"
                        eval="[
-                                (4, ref('product_pricelist_import.usr_group')),
                                 (4, ref('account.group_account_invoice')),
                                 (4, ref('base.group_user')),
-                                (4, ref('base.group_sale_salesman'))  ]"/>
+                                (4, ref('base.group_sale_salesman')),
+
+                                (4, ref('stock.group_stock_user')),
+                                ]"/>
             </record>
 
             <!-- grupo usuarios de almacen -->
@@ -53,7 +58,6 @@
                     del sistema, tienen todas las funciones</field>
                 <field name="implied_ids"
                        eval="[
-                                (4, ref('product_pricelist_import.adm_group')),
                                 (4, ref('account.group_account_user')),
                                 (4, ref('account.group_account_invoice')),
                                 (4, ref('stock.group_locations')),

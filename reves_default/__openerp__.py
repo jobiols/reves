@@ -36,7 +36,7 @@ Customización Ramos Revestimientos
         # 'base_vat_unique_parent',  # evita que duplique cuit en multicompañia
         'disable_openerp_online',  # elimina referencias a odoo online
         'account_cancel',  # Muestra el check en los diarios que permite cancelar asientos
-        'product_pricelist_import',  # Importa lista de precios y carga productos
+#        'product_pricelist_import',  # Importa lista de precios y carga productos
         'hide_product_variants',  # oculta las variantes
         'im_chat',  # mensajeria instantanea entre usuarios de odoo
         #        'express_checkout',         # Facturación express
@@ -51,6 +51,7 @@ Customización Ramos Revestimientos
         'l10n_ar_aeroo_purchase',  # dependencia requerida
         'l10n_ar_aeroo_einvoice',  # dependencia requerida
         'l10n_ar_aeroo_stock',  # dependencia requerida
+        'l10n_ar_aeroo_voucher', # dependencia requerida
         #        'po_custom_reports',        # dependencia requerida
         #        'custom_vat_ledger',        # dependencia requerida
         #        'odoo_argentina_fix',       # patch a la localización
@@ -58,7 +59,7 @@ Customización Ramos Revestimientos
         #        'ticket_citi_fix',          # corrige citi para pv impresor fiscal
         'product_unique_default_code',  # impide que se duplique el default_code
         'hide_messaging',  # oculta el menu de mensajeria
-        'base_multi_store',  # agrega capacidad de multitienda analogo a multicompañia
+#        'base_multi_store',  # agrega capacidad de multitienda analogo a multicompañia
         'voucher_payment_check_fix',  # evita que aparezca cheques propios en medios de pago de cliente
     ],
     'data': [

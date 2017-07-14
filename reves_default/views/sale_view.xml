@@ -2,6 +2,10 @@
 <openerp>
     <data>
 
+        <!-- mostrar los diarios en las facturas para los integrantes del grupo group_reves_sales_users -->
+
+
+
         <!-- agrega una condición para que los integrantes del grupo group_reves_sales_users y
         group_reves_stock_users no puedan editar el precio en la orden de venta-->
 
@@ -18,8 +22,10 @@
             </field>
         </record>
 
-        <!-- agrega una condición para que los integrantes del grupo group_reves_sales_users y
-        group_reves_stock_users  no puedan editar el precio en la factura-->
+        <!--
+        - agrega una condición para que los integrantes del grupo group_reves_sales_users y
+          group_reves_stock_users  no puedan editar el precio en la factura
+        -->
 
         <record id="account_invoice_form_readonly_price_reves" model="ir.ui.view">
             <field name="name">invoice.order.form.readonly.reves</field>
@@ -34,6 +40,22 @@
             </field>
         </record>
 
+        <!-- permite que los usuarios del grupo group_reves_sales_users vean los diarios para poder
+             seleccionar el punto de venta
+        -->
+        <record id="account_invoice_form_show_diary_reves" model="ir.ui.view">
+            <field name="name">invoice.order.form.readonly.reves</field>
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="account.invoice_form"/>
+            <field name='type'>form</field>
+            <field name="arch" type="xml">
+
+                <xpath expr="//field[@name='journal_id']" position="attributes">
+                    <attribute name="groups">reves_default.group_reves_sales_users</attribute>
+                </xpath>
+
+            </field>
+        </record>
 
         <!-- ocultar el menu Contabilidad / Proveedores para los usuarios que no son administradores -->
 
