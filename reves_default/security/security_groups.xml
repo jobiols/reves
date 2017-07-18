@@ -64,7 +64,6 @@
                                 (4, ref('purchase.group_purchase_manager')),
                                 (4, ref('stock.group_stock_manager')),
                                 (4, ref('base.group_sale_manager')),
-                                (4, ref('base_multi_store.group_multi_store'))
                                    ]"/>
             </record>
 

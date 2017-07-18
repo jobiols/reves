@@ -19,7 +19,7 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 ##############################################################################
-from openerp import SUPERUSER_ID
+from openerp import api
 from openerp.osv import osv
 from openerp.tools import float_compare
 from openerp.tools.translate import _
@@ -69,7 +69,8 @@ class sale_order_line(osv.osv):
             # determine if the product needs further check for stock availibility
             is_available = self._check_routing(cr, uid, ids, product_obj, warehouse_id, context=context)
 
-            # check if product is available, and if not: raise a warning, but do this only for products that aren't processed in MTO
+            # check if product is available, and if not: raise a warning, but do this only for products
+            # that aren't processed in MTO
             if not is_available:
                 uom_record = False
                 if uom:
@@ -78,55 +79,61 @@ class sale_order_line(osv.osv):
                         uom_record = False
                 if not uom_record:
                     uom_record = product_obj.uom_id
+
+                # verificar si en algun lado hay, si no hay damos el warning aunque lo dejamos vender igual
                 compare_qty = float_compare(product_obj.virtual_available, qty, precision_rounding=uom_record.rounding)
                 if compare_qty == -1:
-                    usr_obj = self.pool['res.users'].browse(cr, uid, uid, context=context)
-                    location = usr_obj.store_id.name if usr_obj.store_id.name else u'toda la compañia'
-#                    self.calc_virtual_stock(cr, uid, product, uom_record, context)
-                    warn_msg = u'Querés vender {} {}\n pero solo tenés {} {} disponible en {}!\n El stock en mano es {} {}. (sin tener en cuenta lo reservado)'.format(
-                            qty, uom_record.name,
-                            max(0, product_obj.virtual_available), uom_record.name,
-                            location,
-                            max(0, product_obj.qty_available), uom_record.name)
+                    warn_msg = _(
+                            'You plan to sell %.2f %s but you only have %.2f %s available !\nThe real stock is %.2f %s. (without reservations)') % \
+                               (qty, uom_record.name,
+                                max(0, product_obj.virtual_available), uom_record.name,
+                                max(0, product_obj.qty_available), uom_record.name)
                     warning_msgs += _("Not enough stock ! : ") + warn_msg + "\n\n"
+
+                # verificar donde está el producto y si está en otro local sacamos otro warning
+                locations = self.calc_virtual_stock(cr, uid, ids, product_obj, context)
+                if locations:
+#                    warning_msgs += u"El producto no se encuentra en este local\n\n"
+                    warning_msgs += locations
 
         # update of warning messages
         if warning_msgs:
             warning = {
-                'title': ('No hay stock!'),
+                'title': u'Advertencia',
                 'message': warning_msgs
             }
         res.update({'warning': warning})
         return res
 
-    def calc_virtual_stock(self, cr, uid, product_id, uom_record, context):
-        """ Esto imprime las existencias por almacen, pero deja algo mal porque cuando sale revienta.
-        """
-        print 'product id', product_id
-        product_obj = self.pool['product.product'].browse(cr, uid, [product_id], context=context)
-        print 'product name', product_obj.name
+    @api.multi
+    def calc_virtual_stock(self, product_id):
 
-        usr_obj = self.pool['res.users']
-        usr = usr_obj.browse(cr, uid, uid, context=context)
-        # guardar la store
-        tmp_store = usr.store_id.id
-        print 'guardo esto',tmp_store
+        # generar una lista de ids con las ubicaciones internas
+        locations = self.env['stock.location'].search([('usage', '=', 'internal')])
+        ids = []
+        for loc in locations:
+            ids.append(loc.id)
 
-        # obtener todas las stores
-        store_ids = self.pool['res.store'].search(cr, SUPERUSER_ID, [('parent_id', '<>', False)], context=context)
-        print 'usr', usr.name
-        for store_id in store_ids:
-            store = self.pool['res.store'].browse(cr, SUPERUSER_ID, store_id, context=context)
-            print 'guardo esto>', store.id
-            usr_obj.write(cr, SUPERUSER_ID, uid, {'store_id': store.id})
-            location = usr.store_id.name if usr.store_id.name else u'toda la compañia'
-            print 'calculando stock virtual ----------------------------------------', store.name, store.id
-            print 'prod>', product_obj.default_code
-            print 'virtual', product_obj.virtual_available, uom_record.name
-            print 'real   ', product_obj.qty_available, uom_record.name
-            print 'ubicacion', location
-            print '-'
+        # buscar quants con ubicaciones internas y el producto que quiero
+        quants = self.env['stock.quant'].search([
+            ('location_id', 'in', ids),
+            ('product_id', '=', product_id.id),
+            ('reservation_id', '=', False),
+        ])
+        data = {}
+        for quant in quants:
+            loc_id = quant.location_id.location_id.name
+            if loc_id not in data:
+                data[loc_id] = quant.qty
+            else:
+                data[loc_id] += quant.qty
+            print quant.name, quant.qty, loc_id
 
-        #usr_obj.write(cr, SUPERUSER_ID, uid, {'store_id': tmp_store})
-        print '<<<<<<<<<<<<<<<<<<<<<<'
+        if not data:
+            return False
 
+        ret = 'Sucursal --- Cantidad\n'
+        for loc in data:
+            ret += u'{} -> {} Un\n'.format(loc, data[loc])
+
+        return ret
