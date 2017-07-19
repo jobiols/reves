@@ -39,6 +39,29 @@
                 <xpath expr="//field[@name='lst_price']" position="attributes">
                     <attribute name="invisible">1</attribute>
                 </xpath>
+
+                <xpath expr="//field[@name='standard_price']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+
+            </field>
+        </record>
+
+        <!--  product inherited tree view -->
+
+        <record id="view_product_tree_curso" model="ir.ui.view">
+            <field name="name">res.product.tree</field>
+            <field name="model">product.product</field>
+            <field name="inherit_id" ref="product.product_product_tree_view"/>
+            <field name="arch" type="xml">
+                <field name="lst_price" position="after">
+                    <field name="price_1"/>
+                    <field name="price_2" groups="reves_default.group_reves_admin_users"/>
+                    <field name="price_3"/>
+                </field>
+                <field name="ean13" position="replace"/>
+                <field name="lst_price" position="replace"/>
+                <field name="attribute_value_ids" position="replace"/>
             </field>
         </record>
 

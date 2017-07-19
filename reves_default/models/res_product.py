@@ -18,7 +18,8 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 # -----------------------------------------------------------------------------------
-from openerp import models, fields
+from openerp import models, fields, api
+from openerp import SUPERUSER_ID
 
 
 class product_product(models.Model):
@@ -26,13 +27,60 @@ class product_product(models.Model):
 
     prod_in_box = fields.Float(
             u'Cant producto por caja',
-            help=u'Cantidad de metros cuadrados o lineales que entran en una caja')
-
+            help=u'Cantidad de metros cuadrados o lineales que entran en una caja'
+    )
     prod_in_box_uom = fields.Selection([
         ('mt2', 'mts cuadrados'),
         ('mt', 'mts'),
     ],
             'Unidad', required=True,
-            default='mt2')
+            default='mt2'
+    )
+    price_1 = fields.Float(
+            u'Publico',
+            compute='_compute_prices'
+    )
+    price_2 = fields.Float(
+            u'Obra',
+            compute='_compute_prices'
+    )
+    price_3 = fields.Float(
+            u'Efectivo',
+            compute='_compute_prices'
+    )
+
+    @api.one
+    @api.depends('standard_price')
+    def _compute_prices(self):
+        _1_pricelist_id = 1 # Publico
+        _2_pricelist_id = 4 # Obra
+        _3_pricelist_id = 3 # Efectivo
+
+        # calcular el precios basado en la lista de precios
+        self.price_1 = self.pool.get('product.pricelist').price_get(
+            self.env.cr, SUPERUSER_ID, [_1_pricelist_id], self.id, 1.0,
+            context=None)[_1_pricelist_id]
+
+        self.price_2 = self.pool.get('product.pricelist').price_get(
+            self.env.cr, SUPERUSER_ID, [_2_pricelist_id], self.id, 1.0,
+            context=None)[_2_pricelist_id]
+
+        self.price_3 = self.pool.get('product.pricelist').price_get(
+            self.env.cr, SUPERUSER_ID, [_3_pricelist_id], self.id, 1.0,
+            context=None)[_3_pricelist_id]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
