@@ -36,7 +36,6 @@ Customización Ramos Revestimientos
         # 'base_vat_unique_parent',  # evita que duplique cuit en multicompañia
         'disable_openerp_online',  # elimina referencias a odoo online
         'account_cancel',  # Muestra el check en los diarios que permite cancelar asientos
-#        'product_pricelist_import',  # Importa lista de precios y carga productos
         'hide_product_variants',  # oculta las variantes
         'im_chat',  # mensajeria instantanea entre usuarios de odoo
         #        'express_checkout',         # Facturación express
@@ -44,9 +43,8 @@ Customización Ramos Revestimientos
         #        'sale_order_recalculate_prices',  # agrega boton para recalcular precios
         #        'consult_product_price',    # consulta de precios
         #        'partner_search',            # permite buscar partners por varios criterios
-        # 'account_journal_sequence'  # agrega un campo de secuencia en el diario para elegirlos
+        'account_journal_sequence'  # agrega un campo de secuencia en el diario para ordenarlos
         # 'account_statement_move_import'  # agrega boton de importar aputnes en extractos bancarios
-        #        'account_journal_sequence', #Adds sequence field on account journal and it is going to be considered when choosing journals in differents models.
         'l10n_ar_aeroo_sale',  # dependencia requerida
         'l10n_ar_aeroo_purchase',  # dependencia requerida
         'l10n_ar_aeroo_einvoice',  # dependencia requerida
@@ -60,6 +58,7 @@ Customización Ramos Revestimientos
         'product_unique_default_code',  # impide que se duplique el default_code
         'hide_messaging',  # oculta el menu de mensajeria
 #        'base_multi_store',  # agrega capacidad de multitienda analogo a multicompañia
+        'account_multi_store','base_multi_store' # capacidad de limitar los diarios segun los stores (repo journal-constraint)
         'voucher_payment_check_fix',  # evita que aparezca cheques propios en medios de pago de cliente
     ],
     'data': [
