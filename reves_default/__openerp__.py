@@ -43,7 +43,7 @@ Customización Ramos Revestimientos
         #        'sale_order_recalculate_prices',  # agrega boton para recalcular precios
         #        'consult_product_price',    # consulta de precios
         #        'partner_search',            # permite buscar partners por varios criterios
-        'account_journal_sequence'  # agrega un campo de secuencia en el diario para ordenarlos
+        'account_journal_sequence',  # agrega un campo de secuencia en el diario para ordenarlos
         # 'account_statement_move_import'  # agrega boton de importar aputnes en extractos bancarios
         'l10n_ar_aeroo_sale',  # dependencia requerida
         'l10n_ar_aeroo_purchase',  # dependencia requerida
@@ -58,16 +58,19 @@ Customización Ramos Revestimientos
         'product_unique_default_code',  # impide que se duplique el default_code
         'hide_messaging',  # oculta el menu de mensajeria
 #        'base_multi_store',  # agrega capacidad de multitienda analogo a multicompañia
-        'account_multi_store','base_multi_store' # capacidad de limitar los diarios segun los stores (repo journal-constraint)
+        'account_multi_store','base_multi_store', # capacidad de limitar los diarios segun los stores (repo journal-constraint)
         'voucher_payment_check_fix',  # evita que aparezca cheques propios en medios de pago de cliente
     ],
     'data': [
         'security/security_groups.xml',
+        'security/ir.model.access.csv',
         'views/custom_reports.xml',
         'views/res_product.xml',
         'views/account_tax_view.xml',
         'views/sale_view.xml',
         'views/pricelist_view.xml',
+        'stock_report.xml',
+        'views/report_stockpicking.xml'
     ],
     'test': [
 
