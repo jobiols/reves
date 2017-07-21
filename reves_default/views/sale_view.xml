@@ -5,6 +5,25 @@
         <!-- mostrar los diarios en las facturas para los integrantes del grupo group_reves_sales_users -->
 
 
+        <!-- agrega un dominio para que las rutas salgan según la store del usuario
+        	sale_stock.view_order_form_inherit
+
+    TODO NO ANDA
+
+        <record model='ir.ui.view' id='view_order_form_routefilter'>
+            <field name='name'>view.order.form.routefilter</field>
+            <field name='model'>sale.order</field>
+            <field name='inherit_id' ref='sale_stock.view_order_form_inherit'/>
+            <field name='type'>form</field>
+            <field name='arch' type='xml'>
+
+                <xpath expr="//field[@name='route_id']" position="replace">
+
+                </xpath>
+
+            </field>
+        </record>
+ -->
 
         <!-- agrega una condición para que los integrantes del grupo group_reves_sales_users y
         group_reves_stock_users no puedan editar el precio en la orden de venta-->

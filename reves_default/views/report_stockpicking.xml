@@ -279,23 +279,243 @@
 
                             <div t-if="mode!='Envío'">
                                 <div t-if="location.name == 'AM'">
-                                    <h3 style="border-radius: 10px;"><center>RETIRA EN AVENIDA DE MAYO 849 DE 8 A 12 Y DE 13 A 18</center></h3>
+                                    <h3 style="border-radius: 10px;"><center>RETIRA EN AVENIDA DE MAYO 849</center></h3>
                                 </div>
                                 <div t-if="location.name == 'CH'">
-                                    <h3 style="border-radius: 10px;"><center>RETIRA EN CHARCAS 849 DE 8 A 12 Y DE 13 A 18</center></h3>
+                                    <h3 style="border-radius: 10px;"><center>RETIRA EN CHARCAS</center></h3>
                                 </div>
                                 <div t-if="location.name == 'GA'">
-                                    <h3 style="border-radius: 10px;"><center>RETIRA EN GAONA 849 DE 8 A 12 Y DE 13 A 18</center></h3>
+                                    <h3 style="border-radius: 10px;"><center>RETIRA EN GAONA 1702</center></h3>
                                 </div>
                                 <div t-if="location.name == 'PA'">
-                                    <h3 style="border-radius: 10px;"><center>RETIRA EN PALACIOS 849 DE 8 A 12 Y DE 13 A 18</center></h3>
+                                    <h3 style="border-radius: 10px;"><center>RETIRA EN PALACIOS 691</center></h3>
                                 </div>
                                 <div t-if="location.name == 'SM'">
-                                    <h3 style="border-radius: 10px;"><center>RETIRA EN SAN MARTIN 849 DE 8 A 12 Y DE 13 A 18</center></h3>
+                                    <h3 style="border-radius: 10px;"><center>RETIRA EN SAN MARTIN 1485</center></h3>
                                 </div>
                             </div>
 
                         </div>
+                    </t>
+                </t>
+            </t>
+        </template>
+
+
+        <template id="report_picking_sales">
+            <t t-call="report.html_container">
+                <t t-foreach="docs" t-as="ov">
+                    <t t-foreach="ov.picking_ids" t-as="o">
+                        <t t-call="reves_default.external_layout">
+                            <div class="page">
+
+
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <div t-if="o.picking_type_id.code=='incoming' and o.partner_id">
+                                        <span><strong>Proveedor:</strong></span>
+                                    </div>
+                                    <div t-if="o.picking_type_id.code=='internal' and o.partner_id">
+                                        <span><strong>Almacen:</strong></span>
+                                    </div>
+                                    <div t-if="o.picking_type_id.code=='outgoing' and o.partner_id">
+                                        <span><strong>Cliente:</strong></span>
+                                    </div>
+                                    <div t-if="o.partner_id" name="partner_header">
+                                        <div t-field="o.partner_id"
+                                           t-field-options='{"widget": "contact", "fields": ["address", "name", "phone", "fax"], "no_marker": true}'/>
+                                        <p t-if="o.partner_id.vat">IVA: <span t-field="o.partner_id.document_number"/></p>
+                                    </div>
+                                </div>
+                                <div class="col-xs-3">
+                                    <div t-if="o.move_lines and o.move_lines[0].partner_id and o.move_lines[0].partner_id.id == o.partner_id.id">
+                                        <span><strong>Dirección de entrega:</strong></span>
+                                            <div t-field="o.move_lines[0].partner_id"
+                                            t-field-options='{"widget": "contact", "fields": ["address", "name", "phone", "fax"], "no_marker": true}'/>
+                                    </div>
+                                    <div t-if="o.picking_type_id.code != 'internal' and (not o.move_lines or not o.move_lines[0].partner_id) and o.picking_type_id.warehouse_id.partner_id">
+                                        <span><strong>Warehouse Address:</strong></span>
+                                        <div t-field="o.picking_type_id.warehouse_id.partner_id"
+                                            t-field-options='{"widget": "contact", "fields": ["address", "name", "phone", "fax"], "no_marker": true}'/>
+                                    </div>
+                                </div>
+                                <div class="col-xs-6">
+                                    <p>Vendedor: <span t-field="o.create_uid.name"/></p>
+                                    <div t-if="o.observations">
+                                        <p>Notas: <span t-field="o.observations"/></p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <br/>
+
+                            <!-- Datos de la orden de venta -->
+                            <table class="table table-condensed">
+                            <thead>
+                                <tr>
+                                    <th><strong>Orden de venta (Origen)</strong></th>
+                                    <th><strong>Estado</strong></th>
+                                    <th><strong>Fecha de creación</strong></th>
+                                    <th name="td_sched_date_h"><strong>Fecha prometida</strong></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <span t-field="o.origin"/>
+                                    </td>
+                                    <td>
+                                        <span t-field="o.state"/>
+                                    </td>
+                                    <td>
+                                        <span t-esc="time.strftime('%d/%m/%Y',time.strptime(o.date,'%Y-%m-%d %H:%M:%S'))"/>
+                                    </td>
+                                    <td name="td_sched_date">
+                                        <span t-esc="time.strftime('%d/%m/%Y',time.strptime(o.min_date,'%Y-%m-%d %H:%M:%S'))"/>
+                                    </td>
+                                </tr>
+                            </tbody>
+                            </table>
+                            <br/>
+                            <br/>
+
+                            <!-- Datos de los productos -->
+                            <table class="table table-condensed" t-if="not o.pack_operation_ids">
+                              <thead>
+                                <tr>
+                                    <th><strong>Productos primera tabla</strong></th>
+                                    <th class="text-right"><strong>Cantidad</strong></th>
+                                    <t t-if="o.picking_type_id.code != 'incoming'"><th><strong>Origen</strong></th></t>
+                                    <t t-if="o.picking_type_id.code != 'outgoing'"><th><strong>Destination</strong></th></t>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr t-foreach="o.move_lines" t-as="move">
+                                    <t t-if="(o.state != 'partially_available') or (move.reserved_availability > 0)">
+                                        <td><span t-field="move.product_id"/></td>
+                                        <td class="text-right">
+                                            <t t-if="o.state == 'partially_available'">
+                                                <span t-field="move.reserved_availability"/> <span t-field="move.product_id.uom_id" groups="product.group_uom"/>
+                                            </t>
+                                            <t t-if="o.state != 'partially_available'">
+                                                <span t-field="move.product_uom_qty"/> <span t-field="move.product_uom" groups="product.group_uom"/>
+                                            </t>
+                                        </td>
+                                        <t t-if="o.picking_type_id.code != 'incoming'"><td><span t-field="move.location_id"/></td></t>
+                                        <t t-if="o.picking_type_id.code != 'outgoing'"><td><span t-field="move.location_dest_id"/></td></t>
+                                    </t>
+                                </tr>
+                              </tbody>
+                            </table>
+
+                            <!-- Datos de los productos -->
+                            <table class="table table-condensed" t-if="o.pack_operation_ids">
+                              <thead>
+                                <tr>
+                                    <th><strong>Productos segunda tabla</strong></th>
+                                    <th class="text-right"><strong>Cantidad</strong></th>
+                                    <t t-if="o.picking_type_id.code != 'incoming'"><th><strong>Origen</strong></th></t>
+                                    <t t-if="o.picking_type_id.code != 'outgoing'"><th><strong>Destino</strong></th></t>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr t-foreach="o.pack_operation_ids" t-as="pack_operation">
+                                    <td><span t-field="pack_operation.product_id"/>
+                                        <t t-if="not pack_operation.product_id and pack_operation.package_id"><span  t-field="pack_operation.package_id"/></t></td>
+                                    <td class="text-right"><span t-field="pack_operation.product_qty"/> <span t-field="pack_operation.product_uom_id" groups="product.group_uom"/></td>
+                                    <t t-if="o.picking_type_id.code != 'incoming'"><td><span t-field="pack_operation.location_id"/>
+                                        <span t-if="pack_operation.package_id">:</span>
+                                        <span t-field="pack_operation.package_id"/>
+                                        <span t-if="pack_operation.lot_id">:</span>
+                                        <span t-field="pack_operation.lot_id"/>
+                                        </td>
+                                    </t>
+                                    <t t-if="o.picking_type_id.code != 'outgoing'"><td><span t-field="pack_operation.location_dest_id"/>
+                                        <span t-if="pack_operation.result_package_id">:</span>
+                                        <span t-field="pack_operation.result_package_id"/>
+                                    </td></t>
+                                </tr>
+                              </tbody>
+                            </table>
+                            <br/><br/>
+
+                            <!--
+
+                            <table class="table table-condensed">
+                              <thead>
+                                <tr>
+                                    <th><strong>name</strong></th>
+                                    <th><strong>date_expected</strong></th>
+                                    <th><strong>Origen</strong></th>
+                                    <th><strong>Destino</strong></th>
+                                    <th><strong>OV</strong></th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr t-foreach="o.move_lines" t-as="move">
+                                    <t t-set="location" t-value="move.location_id.location_id" > </t>
+                                    <td>
+                                        <span t-field="move.name"/>
+                                    </td>
+                                    <td>
+                                        <span t-field="move.date_expected"/>
+                                    </td>
+                                    <td>
+                                        <span t-field="move.location_id.location_id"/>
+                                    </td>
+                                    <td>
+                                        <span t-field="move.origin"/>
+                                    </td>
+                                </tr>
+                              </tbody>
+                            </table>
+
+                            <p>>>>>>>>>>>>>>>>>> <span t-esc="location.name"/> <span t-esc="mode"/></p>
+                            -->
+
+                            <!-- obtener la ubicación de stock de la primera linea -->
+                            <t t-set="location" t-value="o.move_lines and o.move_lines[0].location_id and o.move_lines[0].location_id.location_id" />
+
+                            <!-- obtener si es envio de la primera linea -->
+                            <t t-set="mode" t-value="o.move_lines and o.move_lines[0].location_id and o.move_lines[0].location_id.name" />
+
+                            <div t-if="mode=='Envío'">
+                                <center>
+                                <table style="border-radius: 10px; background: #bfffa8; padding: 15px; width:600px;">
+                                    <tbody>
+                                        <tr>
+                                            <td style="padding-left: 10px;"><span style="color:#FF0000;">IMPORTANTE</span></td>
+                                            <td style="padding-left: 10px;"><strong>Ramos Revestimientos</strong> transporta
+                                                los materiales, para la descarga de los mismos el cliente deberá contar
+                                                con personal en obra o domicilio.</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                </center>
+                            </div>
+
+                            <div t-if="mode!='Envío'">
+                                <div t-if="location.name == 'AM'">
+                                    <h3 style="border-radius: 10px;"><center>RETIRA EN AVENIDA DE MAYO 849</center></h3>
+                                </div>
+                                <div t-if="location.name == 'CH'">
+                                    <h3 style="border-radius: 10px;"><center>RETIRA EN CHARCAS</center></h3>
+                                </div>
+                                <div t-if="location.name == 'GA'">
+                                    <h3 style="border-radius: 10px;"><center>RETIRA EN GAONA 1702</center></h3>
+                                </div>
+                                <div t-if="location.name == 'PA'">
+                                    <h3 style="border-radius: 10px;"><center>RETIRA EN PALACIOS 691</center></h3>
+                                </div>
+                                <div t-if="location.name == 'SM'">
+                                    <h3 style="border-radius: 10px;"><center>RETIRA EN SAN MARTIN 1485</center></h3>
+                                </div>
+                            </div>
+
+
+
+                            </div>
+                        </t>
                     </t>
                 </t>
             </t>
