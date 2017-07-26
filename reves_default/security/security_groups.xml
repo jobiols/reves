@@ -108,5 +108,10 @@
                       name="Categorias de productos"
                       sequence="770"/>
              -->
+
+            <record id="stock_multi_store.stock_warehouse_store_rule" model="ir.rule">
+                <field name="groups" eval="[(4, ref('reves_default.group_reves_stock_users'))]"/>
+            </record>
+
         </data>
 </openerp>
