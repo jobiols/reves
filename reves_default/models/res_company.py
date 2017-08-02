@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
-#-----------------------------------------------------------------------------------
+# -----------------------------------------------------------------------------------
 #
-#    Copyright (C) 2016  jeo Software  (http://www.jeo-soft.com.ar)
+#    Copyright (C) 2017  jeo Software  (http://www.jeosoft.com.ar)
 #    All Rights Reserved.
 #
 #    This program is free software: you can redistribute it and/or modify
@@ -17,14 +17,14 @@
 #    You should have received a copy of the GNU Affero General Public License
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
-#-----------------------------------------------------------------------------------
-from . import res_product
-from . import account_tax
-from . import account_invoice_line
-from . import sale
-from . import pricelist
-from . import sale_stock
-from . import stock
-from . import res_company
+# -----------------------------------------------------------------------------------
+from openerp import models, fields
 
-# vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
+
+class res_company(models.Model):
+    _inherit = "res.company"
+
+    report_send_comment = fields.Text(
+            'Comentario para envios a domicilio se muestra en los remitos',
+            required=False
+    )

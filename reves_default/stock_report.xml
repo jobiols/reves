@@ -1,18 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <openerp>
     <data>
-
         <report
-            string="Imprimir mi Remito"
-            id="action_report_picking_sales"
-            model="sale.order"
-            report_type="qweb-pdf"
-            name="reves_default.report_picking_sales"
-            file="reves_default.report_picking_sales"
-        />
-
-        <report
-            string="Imprimir Remito"
+            string="REMITO"
             id="action_report_picking" 
             model="stock.picking" 
             report_type="qweb-pdf"
