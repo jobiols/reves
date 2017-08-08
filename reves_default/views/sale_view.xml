@@ -62,6 +62,7 @@
         <!-- permite que los usuarios del grupo group_reves_sales_users vean los diarios para poder
              seleccionar el punto de venta
         -->
+        <!-- NO ENTIENDO PA QUE SIRVE ESTO
         <record id="account_invoice_form_show_diary_reves" model="ir.ui.view">
             <field name="name">invoice.order.form.readonly.reves</field>
             <field name="model">account.invoice</field>
@@ -75,6 +76,7 @@
 
             </field>
         </record>
+        -->
 
         <!-- ocultar el menu Contabilidad / Proveedores para los usuarios que no son administradores -->
 
