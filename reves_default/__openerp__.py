@@ -65,8 +65,7 @@ Customización Ramos Revestimientos
 
         # impresora fiscal epson
         'fpoc',
-        'l10n_ar_fpoc',
-        'ra_fpoc'
+        'l10n_ar_fpoc'
     ],
     'data': [
         'security/security_groups.xml',
