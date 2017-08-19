@@ -33,6 +33,7 @@ Customización Ramos Revestimientos
     'depends': [
         'l10n_ar_base',  # modulo base para localización argentina
         'base_vat_unique',  # evita que duplique cuit
+        'base_vat_dni',     # validaciones para DNI / CUIT
         # 'base_vat_unique_parent',  # evita que duplique cuit en multicompañia
         'disable_openerp_online',  # elimina referencias a odoo online
         'account_cancel',  # Muestra el check en los diarios que permite cancelar asientos
@@ -61,6 +62,7 @@ Customización Ramos Revestimientos
 #        'account_multi_store','base_multi_store', # capacidad de limitar los diarios segun los stores (repo journal-constraint)
         'voucher_payment_check_fix',  # evita que aparezca cheques propios en medios de pago de cliente
         'account_invoice_tax_auto_update', # autocalcula los impuestos al salvar asi no hay que hacer el update
+
         # impresora fiscal epson
         'fpoc',
         'l10n_ar_fpoc',
