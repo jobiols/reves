@@ -12,34 +12,25 @@
                 <field name="visible" eval="0" />
             </record>
 
-            <!-- GRUPO ALMACEN -->
-            <record id="group_reves_stock_users" model="res.groups">
-                <field name="name">Almacén</field>
-                <field name="category_id" ref="module_reves"/>
-                <field name="comment">Grupo para todos los usuarios que manejan stock</field>
-                <field name="implied_ids"
-                       eval="[
-                                (4, ref('base.group_user')),
-                                (4, ref('stock.group_stock_user')),
-                                 ]"/>
-            </record>
-
-            <!-- GRUPO VENTAS -->
+            <!-- GRUPO VENTAS
+                 (4, ref('stock.group_stock_user')), para que pueda ver stock en todos lados
+            -->
             <record id="group_reves_sales_users" model="res.groups">
-                <field name="name">Comercial</field>
+                <field name="name">Usuario comercial</field>
                 <field name="category_id" ref="module_reves"/>
                 <field name="comment">Grupo para todos los usuarios comerciales</field>
                 <field name="implied_ids"
                        eval="[
-                                (4, ref('group_reves_stock_users')),
                                 (4, ref('account.group_account_invoice')),
+                                (4, ref('base.group_user')),
                                 (4, ref('base.group_sale_salesman')),
+                                (4, ref('stock.group_stock_user')),
                                 ]"/>
             </record>
 
             <!-- GRUPO ENCARGADO -->
             <record id="group_reves_manager_users" model="res.groups">
-                <field name="name">Encargado</field>
+                <field name="name">Usuario encargado</field>
                 <field name="category_id" ref="module_reves"/>
                 <field name="comment">Grupo para todos los usuarios encargados, tiene los derechos
                     del grupo comercial mas la posibilidad de ver todas las listas de precio</field>
@@ -47,6 +38,29 @@
                        eval="[
                                 (4, ref('group_reves_sales_users')),
                               ]"/>
+            </record>
+
+
+            <!-- GRUPO ALMACEN -->
+            <record id="group_reves_stock_users" model="res.groups">
+                <field name="name">Usuario de almacén</field>
+                <field name="category_id" ref="module_reves"/>
+                <field name="comment">Grupo para todos los usuarios que manejan stock</field>
+                <field name="implied_ids"
+                       eval="[
+                                (4, ref('base.group_user')),
+                                (4, ref('stock.group_stock_user')),
+                                 ]"/>
+
+                <!--
+                <field name="implied_ids"
+                       eval="[
+                                (4, ref('base.group_user')),
+                                (4, ref('stock.group_locations')),
+                                (4, ref('stock.group_stock_user')),
+                                (4, ref('stock.group_stock_manager')),
+                                 ]"/>
+-->
             </record>
 
             <!-- GRUPO ADMINISTRADOR -->
@@ -58,7 +72,6 @@
                     del sistema, tienen todas las funciones</field>
                 <field name="implied_ids"
                        eval="[
-                                (4, ref('group_reves_manager_users')),
                                 (4, ref('account.group_account_user')),
                                 (4, ref('account.group_account_invoice')),
                                 (4, ref('stock.group_locations')),
@@ -70,7 +83,8 @@
 
             <!-- Reglas de registro para manejar las listas de precios -->
 
-            <!-- agregamos permiso para ver las listas restringidas a usuarios admin y encargado -->
+
+            <!-- agregamos permiso para ver las listas restringidas a usuarios admin y encargado
             <record id="pricelist_permit_admin_rule" model="ir.rule">
                 <field name="name">Permite ver las listas de precio restringidas</field>
                 <field name="model_id" ref="product.model_product_pricelist"/>
@@ -78,10 +92,10 @@
                                             (4, ref('group_reves_manager_users'))]"/>
                 <field name="domain_force">[('restricted','=',True)]</field>
             </record>
-
+-->
             <!-- permiso para ver las listas restringidas a usuarios comercial y stock-->
             <record id="pricelist_permit_sales_rule" model="ir.rule">
-                <field name="name">Restriccion de lista de precios</field>
+                <field name="name">Permite ver las listas de precio no restringidas</field>
                 <field name="model_id" ref="product.model_product_pricelist"/>
                 <field name="groups" eval="[(4, ref('group_reves_sales_users')),
                                             (4, ref('group_reves_stock_users'))]"/>
