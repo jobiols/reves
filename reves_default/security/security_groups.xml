@@ -33,7 +33,7 @@
                        eval="[
                                 (4, ref('group_reves_stock_users')),
                                 (4, ref('account.group_account_invoice')),
-                                (4, ref('base.group_sale_salesman')),
+                                (4, ref('base.group_sale_salesman_all_leads')),
                                 ]"/>
             </record>
 
@@ -96,7 +96,8 @@
                       sequence="770"/>
 
 
-            <!-- le ponemos estas regalas solo al usuario de stock para sacarselas a los demas usuarios -->
+            <!-- le ponemos estas regalas al usuario de stock sacandoselas a los demas usuarios -->
+
 
             <record id="stock_multi_store.stock_warehouse_store_rule" model="ir.rule">
                 <field name="groups" eval="[(4, ref('reves_default.group_reves_stock_users'))]"/>
@@ -110,10 +111,14 @@
                 <field name="groups" eval="[(4, ref('reves_default.group_reves_stock_users'))]"/>
             </record>
 
+            <record id="base_multi_store.res_store_rule" model="ir.rule">
+                <field name="groups" eval="[(4, ref('reves_default.group_reves_stock_users'))]"/>
+            </record>
+<!--
             <record id="sale_multi_store.sale_order_store_rule" model="ir.rule">
                 <field name="groups" eval="[(4, ref('reves_default.group_reves_stock_users'))]"/>
             </record>
-
+-->
             <!-- permitir que todos puedan ver el journal_id para elegir el punto de venta -->
 
             <record id="account_invoice_form_reves" model="ir.ui.view">

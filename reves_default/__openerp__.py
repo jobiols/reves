@@ -58,8 +58,8 @@ Customización Ramos Revestimientos
         #        'ticket_citi_fix',          # corrige citi para pv impresor fiscal
         'product_unique_default_code',  # impide que se duplique el default_code
         'hide_messaging',  # oculta el menu de mensajeria
-        'base_multi_store',  # agrega capacidad de multitienda analogo a multicompañia
-#        'account_multi_store','base_multi_store', # capacidad de limitar los diarios segun los stores (repo journal-constraint)
+#        'base_multi_store',  # agrega capacidad de multitienda analogo a multicompañia
+        'account_multi_store', 'base_multi_store', 'stock_multi_store',  # capacidad de limitar los diarios segun los stores (repo journal-constraint)
         'voucher_payment_check_fix',  # evita que aparezca cheques propios en medios de pago de cliente
         'account_invoice_tax_auto_update', # autocalcula los impuestos al salvar asi no hay que hacer el update
 
