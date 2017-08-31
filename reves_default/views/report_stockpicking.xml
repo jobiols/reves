@@ -161,7 +161,7 @@
                             <table class="table table-condensed" t-if="not o.pack_operation_ids">
                               <thead>
                                 <tr>
-                                    <th><strong>Productos primera tabla</strong></th>
+                                    <th><strong>Productos</strong></th>
                                     <th class="text-right"><strong>Cantidad</strong></th>
                                     <t t-if="o.picking_type_id.code != 'incoming'"><th><strong>Origen</strong></th></t>
                                     <t t-if="o.picking_type_id.code != 'outgoing'"><th><strong>Destination</strong></th></t>
@@ -190,7 +190,7 @@
                             <table class="table table-condensed" t-if="o.pack_operation_ids">
                               <thead>
                                 <tr>
-                                    <th><strong>Productos segunda tabla</strong></th>
+                                    <th><strong>Productos - segunda tabla</strong></th>
                                     <th class="text-right"><strong>Cantidad</strong></th>
                                     <t t-if="o.picking_type_id.code != 'incoming'"><th><strong>Origen</strong></th></t>
                                     <t t-if="o.picking_type_id.code != 'outgoing'"><th><strong>Destino</strong></th></t>
