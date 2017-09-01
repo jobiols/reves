@@ -104,6 +104,8 @@
                                     <div t-if="o.picking_type_id.code=='outgoing' and o.partner_id">
                                         <span><strong>Cliente:</strong></span>
                                     </div>
+
+                                    <!-- Direccion del cliente FACTURACION -->
                                     <div t-if="o.partner_id" name="partner_header">
                                         <div t-field="o.partner_id"
                                            t-field-options='{"widget": "contact", "fields": ["address", "name", "phone", "fax"], "no_marker": true}'/>
@@ -111,11 +113,14 @@
                                     </div>
                                 </div>
                                 <div class="col-xs-3">
-                                    <div t-if="o.move_lines and o.move_lines[0].partner_id and o.move_lines[0].partner_id.id == o.partner_id.id">
+
+                                    <!-- Direccion del cliente ENTREGA -->
+                                    <div t-if="o.move_lines and o.move_lines[0].partner_shipping_id and o.move_lines[0].partner_shipping_id.id">
                                         <span><strong>Dirección de entrega:</strong></span>
-                                            <div t-field="o.move_lines[0].partner_id"
+                                            <div t-field="o.move_lines[0].partner_shipping_id"
                                             t-field-options='{"widget": "contact", "fields": ["address", "name", "phone", "fax"], "no_marker": true}'/>
                                     </div>
+
                                     <div t-if="o.picking_type_id.code != 'internal' and (not o.move_lines or not o.move_lines[0].partner_id) and o.picking_type_id.warehouse_id.partner_id">
                                         <span><strong>Warehouse Address:</strong></span>
                                         <div t-field="o.picking_type_id.warehouse_id.partner_id"
@@ -133,7 +138,7 @@
                             <br/>
 
                             <!-- Datos de la orden de venta -->
-                            <table class="table" width="100%" style="border-style: solid; padding: 10px 10px 10px 10px;">
+                            <table class="table-condensed" width="100%" style="border-style: solid; padding: 10px 10px 10px 10px;">
                                 <colgroup>
                                     <col width="33%" />
                                     <col width="33%" />
@@ -161,10 +166,10 @@
                             <table class="table table-condensed" t-if="not o.pack_operation_ids">
                               <thead>
                                 <tr>
-                                    <th><strong>Productos</strong></th>
+                                    <th><strong>Productos a retirar</strong></th>
                                     <th class="text-right"><strong>Cantidad</strong></th>
                                     <t t-if="o.picking_type_id.code != 'incoming'"><th><strong>Origen</strong></th></t>
-                                    <t t-if="o.picking_type_id.code != 'outgoing'"><th><strong>Destination</strong></th></t>
+                                    <t t-if="o.picking_type_id.code != 'outgoing'"><th><strong>Destino</strong></th></t>
                                 </tr>
                               </thead>
                               <tbody>
@@ -190,7 +195,7 @@
                             <table class="table table-condensed" t-if="o.pack_operation_ids">
                               <thead>
                                 <tr>
-                                    <th><strong>Productos - segunda tabla</strong></th>
+                                    <th><strong>Productos a enviar</strong></th>
                                     <th class="text-right"><strong>Cantidad</strong></th>
                                     <t t-if="o.picking_type_id.code != 'incoming'"><th><strong>Origen</strong></th></t>
                                     <t t-if="o.picking_type_id.code != 'outgoing'"><th><strong>Destino</strong></th></t>
@@ -226,7 +231,9 @@
 
                             <!-- esto escribe el texto que se pone en el comentario de la ubicacion -->
                             <dif t-if="mode!='Envío'">
-                                <h2><center><span t-field="o.pick_from"/></center></h2>
+                                <center>
+                                    <h2><span t-field="o.pick_from"/></h2>
+                                </center>
                             </dif>
 
                             <!-- esto escribe el texto que se pone en el comentario de la empresa -->
