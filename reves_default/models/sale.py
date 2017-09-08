@@ -18,11 +18,14 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 # -----------------------------------------------------------------------------------
-from openerp import models, api
+from openerp import fields, models, api
 
 
 class sale_order_line(models.Model):
     _inherit = 'sale.order.line'
+
+    # lo ponemos readonly para todos y despues lo dejamos editar con permisos
+    price_unit = fields.Float(states={'draft': [('readonly', True)]})
 
     @api.model
     def product_id_change(self, ppp, pricelist, product, qty=0,

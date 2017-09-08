@@ -41,8 +41,9 @@
             <record id="group_reves_manager_users" model="res.groups">
                 <field name="name">Encargado</field>
                 <field name="category_id" ref="module_reves"/>
-                <field name="comment">Grupo para todos los usuarios encargados, tiene los derechos
-                    del grupo comercial mas la posibilidad de ver todas las listas de precio</field>
+                <field name="comment">
+Los encargados tienen los mismos permisos que los comerciales
+pero pueden acceder a las listas de precio restringidas</field>
                 <field name="implied_ids"
                        eval="[
                                 (4, ref('group_reves_sales_users')),
@@ -54,10 +55,10 @@
             <record id="group_reves_admin_users" model="res.groups">
                 <field name="name">Administración</field>
                 <field name="category_id" ref="module_reves"/>
-                <field name="comment">Grupo para todos los usuarios que son administradores
-                    del sistema, tienen todas las funciones</field>
+                <field name="comment">Los administradores tienen todas las funciones</field>
                 <field name="implied_ids"
                        eval="[
+                                (4, ref('base_multi_store.group_multi_store')),
                                 (4, ref('group_reves_manager_users')),
                                 (4, ref('account.group_account_user')),
                                 (4, ref('account.group_account_invoice')),

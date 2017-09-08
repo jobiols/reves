@@ -24,6 +24,9 @@ from openerp import models, fields, api
 class account_invoice_line(models.Model):
     _inherit = "account.invoice.line"
 
+    # lo ponemos readonly para todos y despues lo dejamos editar con permisos
+    price_unit = fields.Float(readonly=True)
+
     @api.one
     def _compute_price(self):
         """ Hereda de la funcion _compute_price que es llamada con un @depends cuando

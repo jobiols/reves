@@ -77,7 +77,8 @@ Customización Ramos Revestimientos
         'views/pricelist_view.xml',
         'stock_report.xml',
         'views/report_stockpicking.xml',
-        'views/res_company.xml'
+        'views/res_company.xml',
+        'views/account_invoice.xml'
     ],
     'test': [
 
