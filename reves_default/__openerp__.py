@@ -21,7 +21,7 @@
 
 {
     'name': 'Ramos Revestimientos',
-    'version': '8.0.1.1',
+    'version': '8.0.3.0',
     'category': 'Tools',
     'summary': 'Customización Ramos Revestimientos',
     'description': """
@@ -29,12 +29,11 @@
 Customización Ramos Revestimientos
 ==================================
 
-NO INSTALAR, INCLUYE LA VERTICALIZACION
-
 """,
     'author': 'jeo Software',
     'depends': [
         'l10n_ar_base',  # modulo base para localización argentina
+        'vertical_ceramicas',  # modulo vertical de mayoristas de ceramicas
         'base_vat_unique',  # evita que duplique cuit
         'base_vat_dni',     # validaciones para DNI / CUIT
         # 'base_vat_unique_parent',  # evita que duplique cuit en multicompañia
@@ -71,22 +70,12 @@ NO INSTALAR, INCLUYE LA VERTICALIZACION
         'l10n_ar_fpoc'
     ],
     'data': [
-        'security/security_groups.xml',
-        'security/ir.model.access.csv',
         'views/custom_reports.xml',
-        'views/res_product.xml',
-        'views/account_tax_view.xml',
-        'views/sale_view.xml',
-        'views/pricelist_view.xml',
-        'stock_report.xml',
-        'views/report_stockpicking.xml',
-        'views/res_company.xml',
-        'views/account_invoice.xml'
     ],
     'test': [
 
     ],
-    'installable': False,
+    'installable': True,
     'application': True,
     'auto_install': False,
     'images': [],
