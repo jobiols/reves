@@ -20,6 +20,7 @@
 #-----------------------------------------------------------------------------------
 from openerp import models, fields
 
+
 class product_pricelist(models.Model):
     _inherit = "product.pricelist"
 

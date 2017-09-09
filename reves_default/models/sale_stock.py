@@ -93,7 +93,7 @@ class sale_order_line(osv.osv):
                 # verificar donde está el producto y si está en otro local sacamos otro warning
                 locations = self.calc_virtual_stock(cr, uid, ids, product_obj, context)
                 if locations:
-#                    warning_msgs += u"El producto no se encuentra en este local\n\n"
+#                   warning_msgs += u"El producto no se encuentra en este local\n\n"
                     warning_msgs += locations
 
         # update of warning messages

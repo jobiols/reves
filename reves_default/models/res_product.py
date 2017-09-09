@@ -69,18 +69,4 @@ class product_product(models.Model):
             self.env.cr, SUPERUSER_ID, [_3_pricelist_id], self.id, 1.0,
             context=None)[_3_pricelist_id]
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:

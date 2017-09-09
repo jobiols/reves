@@ -46,9 +46,7 @@
         </record>
 
         <!--  product inherited tree view
-        agrega los tres precios en la lista de productos, el price 2 es mostrado solo a admin y a manager
-
-        -->
+        agrega los tres precios en la lista de productos, el price 2 es mostrado solo a admin y a manager -->
 
         <record id="view_product_tree_curso" model="ir.ui.view">
             <field name="name">res.product.tree</field>
