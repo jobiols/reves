@@ -28,6 +28,9 @@
 
 Customización Ramos Revestimientos
 ==================================
+
+NO INSTALAR, INCLUYE LA VERTICALIZACION
+
 """,
     'author': 'jeo Software',
     'depends': [
@@ -83,7 +86,7 @@ Customización Ramos Revestimientos
     'test': [
 
     ],
-    'installable': True,
+    'installable': False,
     'application': True,
     'auto_install': False,
     'images': [],
