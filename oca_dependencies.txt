@@ -1,7 +1,14 @@
 odoo-argentina https://github.com/jobiols/odoo-argentina.git  8.0
-#aeroo_reports https://github.com/aeroo/aeroo_reports.git  8.0
 server-tools https://github.com/jobiols/server-tools.git  8.0
 adhoc-account-invoicing https://github.com/jobiols/adhoc-account-invoicing.git 8.0
-odoomrp-wip https://github.com/jobiols/odoomrp-wip.git 8.0
 jeo https://github.com/jobiols/jeo.git 8.0
-adhoc_multi_store https://github.com/jobiols/adhoc-multi-store.git 8.0
+fiscal-printer https://github.com/jobiols/fiscal-printer.git 8.0
+stock-logistics-workflow https://github.com/oca/stock-logistics-workflow.git 8.0
+odoo-support https://github.com/ingadhoc/odoo-support.git 8.0
+fiscal-printer https://github.com/jobiols/fiscal-printer.git 8.0
+adhoc-reporting-engine https://github.com/jobiols/fiscal-printer.git 8.0
+adhoc-account-payment https://github.com/jobiols/fiscal-printer.git 8.0
+adhoc-account-financial-tools https://github.com/jobiols/fiscal-printer.git 8.0
+adhoc-stock https://github.com/jobiols/fiscal-printer.git 8.0
+web https://github.com/jobiols/fiscal-printer.git 8.0
+journal-constraint https://github.com/jobiols/fiscal-printer.git 8.0
