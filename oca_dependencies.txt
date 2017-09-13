@@ -4,11 +4,10 @@ adhoc-account-invoicing https://github.com/jobiols/adhoc-account-invoicing.git 8
 jeo https://github.com/jobiols/jeo.git 8.0
 stock-logistics-workflow https://github.com/oca/stock-logistics-workflow.git 8.0
 odoo-support https://github.com/ingadhoc/odoo-support.git 8.0
+adhoc-reporting-engine https://github.com/jobiols/adhoc-reporting-engine.git 8.0
+adhoc-account-payment https://github.com/jobiols/adhoc-account-payment.git 8.0
+adhoc-account-financial-tools https://github.com/jobiols/adhoc-account-financial-tools.git 8.0
+adhoc-stock https://github.com/jobiols/adhoc-stock.git 8.0
+web https://github.com/jobiols/web.git 8.0
+journal-constraint https://github.com/jobiols/journal-constraint.git 8.0
 fiscal-printer https://github.com/jobiols/fiscal-printer.git 8.0
-adhoc-reporting-engine https://github.com/jobiols/fiscal-printer.git 8.0
-adhoc-account-payment https://github.com/jobiols/fiscal-printer.git 8.0
-adhoc-account-financial-tools https://github.com/jobiols/fiscal-printer.git 8.0
-adhoc-stock https://github.com/jobiols/fiscal-printer.git 8.0
-web https://github.com/jobiols/fiscal-printer.git 8.0
-journal-constraint https://github.com/jobiols/fiscal-printer.git 8.0
-#fiscal-printer https://github.com/jobiols/fiscal-printer.git 8.0
