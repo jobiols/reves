@@ -10,4 +10,4 @@ adhoc-account-financial-tools https://github.com/jobiols/adhoc-account-financial
 adhoc-stock https://github.com/jobiols/adhoc-stock.git 8.0
 web https://github.com/jobiols/web.git 8.0
 journal-constraint https://github.com/jobiols/journal-constraint.git 8.0
-#fiscal-printer https://github.com/jobiols/fiscal-printer.git 8.0
+fiscal-printer https://github.com/jobiols/fiscal-printer.git 8.0
