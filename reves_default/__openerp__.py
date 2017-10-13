@@ -63,6 +63,8 @@ Customización Ramos Revestimientos
         'voucher_payment_check_fix',  # evita que aparezca cheques propios en medios de pago de cliente
         'account_invoice_tax_auto_update', # autocalcula los impuestos al salvar asi no hay que hacer el update
         'server_mode',  # disable some functions when running databases on odoo servers with parameter server_mode = "some value"
+        'fleet',  # maneja flota de autos
+
 
         # impresora fiscal epson.
         'fpoc',
