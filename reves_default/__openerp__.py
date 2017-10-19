@@ -64,6 +64,7 @@ Customización Ramos Revestimientos
         'account_invoice_tax_auto_update', # autocalcula los impuestos al salvar asi no hay que hacer el update
         'server_mode',  # disable some functions when running databases on odoo servers with parameter server_mode = "some value"
         'fleet',  # maneja flota de autos
+        'account_journal_report_by_date', # permite reportar los diarios por dia
 
 
         # impresora fiscal epson.
