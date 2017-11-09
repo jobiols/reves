@@ -62,7 +62,7 @@ Customización Ramos Revestimientos
         'server_mode',  # disable some functions when running databases on odoo servers with parameter server_mode = "some value"
         'fleet',  # maneja flota de autos
         'account_journal_report_by_date', # permite reportar los diarios por dia
-
+        'account_transfer', # permite hacer transferencia entre cuentas
 
         # impresora fiscal epson.
         'l10n_ar_fpoc',
