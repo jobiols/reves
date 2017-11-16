@@ -63,6 +63,7 @@ Customización Ramos Revestimientos
         'fleet',  # maneja flota de autos
         'account_journal_report_by_date', # permite reportar los diarios por dia
         'account_transfer',  # permite hacer transferencia entre cuentas
+        'web_export_view',   # reportes en excel de cualquier vista.
 
         # impresora fiscal epson.
         'l10n_ar_fpoc',
