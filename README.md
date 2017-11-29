@@ -3,4 +3,4 @@
 
 # jeo Software.
 
-##customización Ramos Revestimientos para odoo v8.0
+## Customización Ramos Revestimientos para odoo v8.0
