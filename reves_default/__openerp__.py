@@ -37,8 +37,7 @@
         # 'account_statement_move_import' # imprtar apuntes extr bancarios
         # 'po_custom_reports',        # dependencia requerida
         # 'custom_vat_ledger',        # dependencia requerida
-        # 'odoo_argentina_fix',       # patch a la localización
-        'account_invoice_tax_add',  # insercion manual impuestos en compras
+        'account_invoice_tax_wizard',  # insercion manual impuestos en compras
         # 'ticket_citi_fix',   # corrige citi para pv impresor fiscal
         'product_unique_default_code',  # impide duplicar default_code
         'hide_messaging',  # oculta menu de mensajeria
