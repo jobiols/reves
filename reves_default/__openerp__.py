@@ -89,7 +89,7 @@
         # repos para la impresora fiscal
         {'usr': 'jobiols', 'repo': 'fiscal-printer', 'branch': '8.0'},
     ],
-    'images': [
+    'docker': [
         {'name': 'aeroo', 'usr': 'jobiols', 'img': 'aeroo-docs'},
         {'name': 'odoo', 'usr': 'jobiols', 'img': 'odoo-jeo', 'ver': '8.0'},
         {'name': 'postgres', 'usr': 'postgres', 'ver': '9.5'},
