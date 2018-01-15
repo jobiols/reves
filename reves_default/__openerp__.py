@@ -86,6 +86,7 @@
         {'usr': 'jobiols', 'repo': 'odoo-addons', 'branch': '8.0'},
         {'usr': 'jobiols', 'repo': 'jeo', 'branch': '8.0'},
         {'usr': 'jobiols', 'repo': 'fiscal-printer', 'branch': '8.0'},
+        {'usr': 'jobiols', 'repo': 'adhoc-multi-store', 'branch': '8.0'},
     ],
     'docker': [
         {'name': 'aeroo', 'usr': 'jobiols', 'img': 'aeroo-docs'},
