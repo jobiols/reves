@@ -20,7 +20,7 @@
 # -----------------------------------------------------------------------------------
 
 {
-    'name': 'Ramos Revestimientos',
+    'name': 'Reves',
     'version': '8.0.4.0',
     'category': 'Tools',
     'summary': 'Customización Ramos Revestimientos',
