@@ -63,14 +63,15 @@
         # impresora fiscal epson.
         'l10n_ar_fpoc',
         'fpoc',
+        'product',
 
         # someday
         # 'currency_rate_update' # actualiza tipo de cambio
         # 'sale_order_recalculate_prices',  # recalcular precios en SOrder
-
     ],
     'data': [
         'views/custom_reports.xml',
+        'views/product_kanban_view.xml',
     ],
     'test': [
 
