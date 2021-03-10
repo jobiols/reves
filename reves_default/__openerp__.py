@@ -55,6 +55,7 @@
         'l10n_ar_aeroo_einvoice',
         'l10n_ar_aeroo_stock',
         'l10n_ar_aeroo_voucher',
+        'l10n_ar_fe_qr',
 
         # modulos para multistore
         'account_multi_store',
@@ -88,14 +89,13 @@
         {'usr': 'jobiols', 'repo': 'jeo', 'branch': '8.0'},
         {'usr': 'jobiols', 'repo': 'fiscal-printer', 'branch': '8.0'},
         {'usr': 'jobiols', 'repo': 'adhoc-multi-store', 'branch': '8.0'},
+        {'usr': 'jobiols', 'repo': 'odoo-jeo-ce', 'branch': '8.0'},
     ],
     'docker': [
         {'name': 'aeroo', 'usr': 'jobiols', 'img': 'aeroo-docs'},
-        {'name': 'odoo', 'usr': 'jobiols', 'img': 'odoo-jeo', 'ver': '8.0'},
+        {'name': 'odoo', 'usr': 'jobiols', 'img': 'odoo-jeo', 'ver': '8.1'},
         {'name': 'postgres', 'usr': 'postgres', 'ver': '9.5'},
         {'name': 'nginx', 'usr': 'nginx', 'ver': 'latest'}
     ]
 
 }
-
-# vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
