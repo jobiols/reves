@@ -84,7 +84,7 @@
 
     'port': '8069',
     'repos': [
-        {'usr': 'jobiols', 'repo': 'reves', 'branch': '8.0'},
+        {'usr': 'jobiols', 'repo': 'reves', 'branch': '8.0', 'ssh': True},
         {'usr': 'jobiols', 'repo': 'odoo-addons', 'branch': '8.0'},
         {'usr': 'jobiols', 'repo': 'jeo', 'branch': '8.0'},
         {'usr': 'jobiols', 'repo': 'fiscal-printer', 'branch': '8.0'},
